@@ -1,6 +1,5 @@
 hi
 baidu
-hello
 this is a con.
 ninty.
 this is a line.
