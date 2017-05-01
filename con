@@ -1,0 +1,201 @@
+root@Light-INVALID:/GitExp# cd git_gt
+root@Light-INVALID:/GitExp/git_gt# ls
+con.c  con.text  con.txt  h.c  README.md  t.c  tc.c  tc.text  t.text
+root@Light-INVALID:/GitExp/git_gt# git branch
+* dev
+  master
+  nbranch
+root@Light-INVALID:/GitExp/git_gt# vi con.txt
+root@Light-INVALID:/GitExp/git_gt# git add con.txt
+root@Light-INVALID:/GitExp/git_gt# git status
+On branch dev
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   con.txt
+
+root@Light-INVALID:/GitExp/git_gt# git commit -m 'con'
+[dev 8645a1d] con
+ 1 file changed, 1 insertion(+)
+root@Light-INVALID:/GitExp/git_gt# git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'original/master'.
+root@Light-INVALID:/GitExp/git_gt# ls
+con.c  README.md  t.c  tc.c  tc.text  t.text
+root@Light-INVALID:/GitExp/git_gt# vi con.txt
+root@Light-INVALID:/GitExp/git_gt# git add con.txt
+root@Light-INVALID:/GitExp/git_gt# git commit -m 'con2'
+[master 0b4d953] con2
+ 1 file changed, 2 insertions(+)
+ create mode 100644 con.txt
+root@Light-INVALID:/GitExp/git_gt# git status
+On branch master
+Your branch is ahead of 'original/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+root@Light-INVALID:/GitExp/git_gt# git merge dev
+Auto-merging con.txt
+CONFLICT (add/add): Merge conflict in con.txt
+Automatic merge failed; fix conflicts and then commit the result.
+root@Light-INVALID:/GitExp/git_gt# vi con.txt
+root@Light-INVALID:/GitExp/git_gt# git add con.txt
+root@Light-INVALID:/GitExp/git_gt# git commit -m 'fix'
+[master 00a442b] fix
+root@Light-INVALID:/GitExp/git_gt# git status
+On branch master
+Your branch is ahead of 'original/master' by 13 commits.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+root@Light-INVALID:/GitExp/git_gt# git checkout de
+error: pathspec 'de' did not match any file(s) known to git.
+root@Light-INVALID:/GitExp/git_gt# git checkout dev
+Switched to branch 'dev'
+root@Light-INVALID:/GitExp/git_gt# vi con.txt
+root@Light-INVALID:/GitExp/git_gt# git checkout master
+Switched to branch 'master'
+Your branch is ahead of 'original/master' by 13 commits.
+  (use "git push" to publish your local commits)
+root@Light-INVALID:/GitExp/git_gt# vi con.txt
+root@Light-INVALID:/GitExp/git_gt# git push origin master
+Username for 'https://github.com': Light7Explorer
+Password for 'https://Light7Explorer@github.com': 
+^C
+root@Light-INVALID:/GitExp/git_gt# git push origin master
+Username for 'https://github.com': Light7Explorer
+Password for 'https://Light7Explorer@github.com': 
+Counting objects: 9, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (9/9), 768 bytes | 0 bytes/s, done.
+Total 9 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+To https://github.com/Light7Explorer/gt.git
+   3cef3fc..00a442b  master -> master
+root@Light-INVALID:/GitExp/git_gt# vi con.txt
+root@Light-INVALID:/GitExp/git_gt# git push origin master
+Username for 'https://github.com': Light7Explorer
+Password for 'https://Light7Explorer@github.com': 
+To https://github.com/Light7Explorer/gt.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/Light7Explorer/gt.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+root@Light-INVALID:/GitExp/git_gt# git fetch
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:Light7Explorer/gt
+   3cef3fc..bf7c317  master     -> original/master
+ * [new branch]      dev        -> original/dev
+   c95fc3e..92e07b6  nbranch    -> original/nbranch
+root@Light-INVALID:/GitExp/git_gt# git merge original/master
+Updating 00a442b..bf7c317
+error: Your local changes to the following files would be overwritten by merge:
+	con.txt
+Please, commit your changes or stash them before you can merge.
+Aborting
+root@Light-INVALID:/GitExp/git_gt# git branches
+git: 'branches' is not a git command. See 'git --help'.
+root@Light-INVALID:/GitExp/git_gt# git branch
+  dev
+* master
+  nbranch
+root@Light-INVALID:/GitExp/git_gt# git merge original/master
+Updating 00a442b..bf7c317
+error: Your local changes to the following files would be overwritten by merge:
+	con.txt
+Please, commit your changes or stash them before you can merge.
+Aborting
+root@Light-INVALID:/GitExp/git_gt# git add con.txt
+root@Light-INVALID:/GitExp/git_gt# git commit -m 'con1'
+[master c668f16] con1
+ 1 file changed, 1 insertion(+)
+root@Light-INVALID:/GitExp/git_gt# git push origin master
+Username for 'https://github.com': Light7Explorer
+Password for 'https://Light7Explorer@github.com': 
+To https://github.com/Light7Explorer/gt.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/Light7Explorer/gt.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+root@Light-INVALID:/GitExp/git_gt# git fetch
+root@Light-INVALID:/GitExp/git_gt# git merge original/master
+Auto-merging con.txt
+CONFLICT (content): Merge conflict in con.txt
+Automatic merge failed; fix conflicts and then commit the result.
+root@Light-INVALID:/GitExp/git_gt# vi con.txt
+root@Light-INVALID:/GitExp/git_gt# git status
+On branch master
+Your branch and 'original/master' have diverged,
+and have 1 and 1 different commit each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+	both modified:   con.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+root@Light-INVALID:/GitExp/git_gt# git add con.txt
+root@Light-INVALID:/GitExp/git_gt# git commit -m 'con3'
+[master 48330ff] con3
+root@Light-INVALID:/GitExp/git_gt# git push original master
+Counting objects: 6, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 566 bytes | 0 bytes/s, done.
+Total 6 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To git@github.com:Light7Explorer/gt.git
+   bf7c317..48330ff  master -> master
+root@Light-INVALID:/GitExp/git_gt# vi con.txt
+root@Light-INVALID:/GitExp/git_gt# git add con.txt
+root@Light-INVALID:/GitExp/git_gt# git commit -m 'con4'
+[master 948418b] con4
+ 1 file changed, 1 insertion(+)
+root@Light-INVALID:/GitExp/git_gt# git push original master
+To git@github.com:Light7Explorer/gt.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:Light7Explorer/gt.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+root@Light-INVALID:/GitExp/git_gt# git fetch
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:Light7Explorer/gt
+   48330ff..17b57f9  master     -> original/master
+root@Light-INVALID:/GitExp/git_gt# git merge original/master
+Auto-merging con.txt
+Merge made by the 'recursive' strategy.
+ con.txt | 1 -
+ 1 file changed, 1 deletion(-)
+root@Light-INVALID:/GitExp/git_gt# git status
+On branch master
+Your branch is ahead of 'original/master' by 2 commits.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+root@Light-INVALID:/GitExp/git_gt# vi con.txt
+root@Light-INVALID:/GitExp/git_gt# git push original master
+Counting objects: 6, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 615 bytes | 0 bytes/s, done.
+Total 6 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To git@github.com:Light7Explorer/gt.git
+   17b57f9..dbeb07a  master -> master
+root@Light-INVALID:/GitExp/git_gt# 
+
