@@ -1,2 +1,2 @@
 hello
-this is a con in the client.
+this is a con.
